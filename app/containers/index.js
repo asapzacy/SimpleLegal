@@ -3,5 +3,6 @@
 export MainContainer from './Main/MainContainer'
 
 /* -------  random containers  ------- */
-export HomeContainer from './Home/HomeContainer'
 export NotFoundContainer from './NotFound/NotFoundContainer'
+
+export InvoicesContainer from './Invoices/InvoicesContainer'
