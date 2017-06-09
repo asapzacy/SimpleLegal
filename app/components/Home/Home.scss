@@ -1,0 +1,7 @@
+
+/* -------  Home  ------- */
+.container {
+  text-align:center;
+  flex-direction:column;
+  composes:flexy from 'styles/_utils.scss'
+}
