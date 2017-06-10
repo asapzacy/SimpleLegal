@@ -1,0 +1,19 @@
+
+/* -------  Dashboard  ------- */
+.container {
+  height:100%;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+}
+.half {
+  flex:1;
+  width:100%;
+  composes:flexy from 'styles/_utils.scss'
+}
+.topHalf {
+  composes:half;
+}
+.bottomHalf {
+  composes:half;
+}

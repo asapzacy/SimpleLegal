@@ -2,5 +2,6 @@
 /* -------  Sidebar  ------- */
 .container {
   flex-basis:20%;
+  min-width: 200px;
   background:$grey1;
 }

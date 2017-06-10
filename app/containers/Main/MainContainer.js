@@ -60,19 +60,9 @@ class MainContainer extends Component {
   render() {
     return (
       <div className={s.outerContainer}>
+        <Sidebar />
         <main className={s.innerContainer}>
-          <Sidebar />
-          <main className={s.dashboard}>
-            {/* { this.state.isLoading
-              ? <Loading />
-              : React.cloneElement(this.props.children, {
-                  loadSampleInvoices: this.loadSampleInvoices,
-                  sortTable: this.sortTable,
-                  ...this.state
-                })
-              } */}
-              {this.props.children}
-          </main>
+          {this.props.children}
         </main>
       </div>
     )

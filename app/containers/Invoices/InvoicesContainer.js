@@ -18,6 +18,7 @@ class InvoicesContainer extends Component {
   makeRequest() {
     getInvoices()
       .then(data => {
+        console.log(data.results)
         this.setState({
           isLoading: false,
           invoices: data.results
@@ -28,15 +29,11 @@ class InvoicesContainer extends Component {
           isLoading: false,
           isError: true
         })
+        throw new Error(error)
       })
   }
-  sortBy(category) {
-    console.log(category)
-    const copy = this.state.invoices
-    console.log(copy)
-  }
   render() {
-    return <Invoices {...this.state} sortBy={this.sortBy} />
+    return <Invoices {...this.state} />
   }
 }
 
