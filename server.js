@@ -19,15 +19,15 @@ const config = {
 }
 
 app.get('/api/invoices', (req, res) => {
-  axios.get(`https://falcon.simplelegal.com/api/v1/invoices/`, config)
+  return axios.get(`https://falcon.simplelegal.com/api/v1/invoices/`, config)
     .then(invoices => res.send(invoices.data))
     .catch(error => res.send(error.status))
 })
 
 app.get('/api/invoices/:id', (req, res) => {
   const id = req.params.id
-  axios.get(`https://falcon.simplelegal.com/api/v1/invoices/${id}`, config)
-    .then(invoices => res.send(invoices.data))
+  return axios.get(`https://falcon.simplelegal.com/api/v1/invoices/${id}`, config)
+    .then(details => { console.log(details);res.send(details.data) })
     .catch(error => res.send(error.status))
 })
 

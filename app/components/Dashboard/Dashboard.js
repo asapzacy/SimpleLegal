@@ -6,7 +6,7 @@ import s from './Dashboard.scss'
 const Dashboard = ({ activeInvoice, invoices }) => (
   <section className={s.container}>
     <section className={s.topHalf}>
-      { activeInvoice ? <h2>{'active'}</h2> : <Details /> }
+      { activeInvoice ? <h2>{activeInvoice}</h2> : <Details /> }
     </section>
     <section className={s.bottomHalf}>
       <Table invoices={invoices} />
@@ -20,31 +20,32 @@ export default Dashboard
 
 
 const Table = ({ invoices }) => (
-  <table style={{width:'100%'}}>
-    <thead>
-      { console.log(invoices) }
-      {/* <tr>
-        <td onClick={() => sortTable('vendor')}>{'vendor'}</td>
-        <td onClick={() => sortTable('price')}>{'price'}</td>
-        <td onClick={() => sortTable('date')}>{'date'}</td>
-        <td onClick={() => sortTable('number')}>{'number'}</td>
-        <td onClick={() => sortTable('status')}>{'status'}</td>
-      </tr> */}
-    </thead>
-    <tbody>
-      { invoices.map((el, i) => (
-        <Item
-          vendor={el.vendor}
-          price={el.total}
-          date={el.invoice_date}
-          number={el.invoice_number}
-          status={el.status}
-          id={el.id}
-          key={i}
-        />)
-      )}
-    </tbody>
-  </table>
+  <section className={s.tableContainer}>
+    <table className={s.table}>
+      <thead className={s.tableHead}>
+        <tr>
+          <td>{'vendor'}</td>
+          <td>{'price'}</td>
+          <td>{'date'}</td>
+          <td>{'number'}</td>
+          <td>{'status'}</td>
+        </tr>
+      </thead>
+      <tbody className={s.tableBody}>
+        { invoices.map((el, i) => (
+          <Item
+            vendor={el.vendor}
+            price={el.total}
+            date={el.invoice_date}
+            number={el.invoice_number}
+            status={el.status}
+            id={el.id}
+            key={i}
+          />)
+        )}
+      </tbody>
+    </table>
+  </section>
 )
 
 const Item = ({ vendor, price, date, id, number, status }) => (
@@ -54,6 +55,6 @@ const Item = ({ vendor, price, date, id, number, status }) => (
     <td>{date.toLocaleString()}</td>
     <td>{`#${number}`}</td>
     <td>{status}</td>
-    <td><Link to={`/api/invoices/${id}`}>{'more info'}</Link></td>
+    <td><Link to={`/invoices/${id}`}>{'more info'}</Link></td>
   </tr>
 )

@@ -1,7 +1,32 @@
 
 /* -------  Sidebar  ------- */
 .container {
-  flex-basis:20%;
-  min-width: 200px;
+  min-width:240px;
   background:$grey1;
+  border-right:1px solid $grey4;
+}
+.menu {
+  font-size:1.2em;
+}
+.list {
+
+}
+.item {
+  border-bottom:1px solid $grey4;
+}
+.link {
+  display:flex;
+  align-items:center;
+  padding:0.8em 0.4em;
+  transition:background 0.44s;
+}
+.link:hover, :global(.active) {
+  background:$real_white;
+}
+.icon {
+  height:1em;
+  width:2em;
+  font-size:1.2em;
+  display:inline-block;
+  background:center center / contain no-repeat;
 }

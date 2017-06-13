@@ -62,7 +62,7 @@ class MainContainer extends Component {
       <div className={s.outerContainer}>
         <Sidebar />
         <main className={s.innerContainer}>
-          {this.props.children}
+          { React.cloneElement(this.props.children) }
         </main>
       </div>
     )
