@@ -1,16 +1,23 @@
 
 /* -------  Overview  ------- */
 .container {
-  background:$real_white;
-  height:100%;
   width:100%;
+  height:100%;
+  padding:2em;
+  display:flex;
+  flex-direction:column;
+  background:$white;
+  border:1px solid $grey4;
 }
-.header {
-  font-size:2.6em;
-  border-bottom:1px solid $grey4;
-  width:50%;
-  color:$grey4;
-  padding-left:5%;
-  margin-left:5%;
-
+.main {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.row {
+  flex:1;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
 }

@@ -1,0 +1,31 @@
+
+/* -------  Stat  ------- */
+.container {
+  margin:0 1em;
+  padding:0.5em 1em;
+  background:$real_white;
+  border-radius:2px;
+  border:1px solid $black;
+  flex:1;
+}
+.text {
+  font-size:0.9em;
+  line-height:1.25;
+  display:inline-block;
+}
+.text::after {
+  content:'';
+  display:block;
+  height:1px;
+  width:150%;
+  background-image:linear-gradient(90deg,$grey4,transparent);
+}
+.stat {
+  display:block;
+  letter-spacing:-1px;
+  font-size:1.25em;
+  margin-top:0.25em;
+  font-family:monospace;
+  font-weight:600;
+  text-align:center;
+}
