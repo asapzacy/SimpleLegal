@@ -8,8 +8,8 @@ export const getInvoices = () => {
 }
 
 export const getDetails = (id) => {
-  const api = `/api/invoices/${id}/`
+  const api = `/api/invoices/${id}`
   return axios.get(api)
-    .then(details => { console.log(details);return details.data })
+    .then(details => details.data)
     .catch(error => error.status)
 }

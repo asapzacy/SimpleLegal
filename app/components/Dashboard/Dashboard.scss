@@ -9,6 +9,7 @@
 .half {
   flex:1;
   width:100%;
+  padding:2em;
   composes:flexy from 'styles/_utils.scss'
 }
 .topHalf {
@@ -16,33 +17,4 @@
 }
 .bottomHalf {
   composes:half;
-}
-
-
-.tableContainer {
-  letter-spacing:0;
-  display:flex;
-  align-items:flex-start;
-  flex-direction:column;
-}
-
-.table {
-  font-size:0.8em;
-  width:100%;
-  table-layout:fixed;
-  border-collapse:collapse;
-}
-.table tr {
-  height:3em;
-}
-.table tr th:first-child {
-  text-align:left;
-  width:40%;
-  padding-left:2%;
-}
-.tableHead {
-  border-bottom:1px solid $grey2;
-}
-.tableBody tr:nth-of-type(even) {
-  background:$real_white;
 }

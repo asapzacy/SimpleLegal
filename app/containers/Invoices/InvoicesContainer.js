@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Invoices } from 'components'
-import { getInvoices, getDetails } from 'helpers/api'
+import { getInvoices } from 'helpers/api'
 
 class InvoicesContainer extends Component {
   constructor() {
@@ -9,35 +9,21 @@ class InvoicesContainer extends Component {
       isLoading: true,
       isError: false,
       invoices: [],
-      activeInvoice: '',
-      details: {}
-
+      active: ''
     }
   }
   componentDidMount() {
     this.makeRequest()
     if (this.props.params.id) {
-      this.setState({ activeInvoice: this.props.params.id })
+      this.setState({ active: this.props.params.id })
     }
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      activeInvoice: nextProps.params.id
-    }, () => this.makeRequest2(this.state.activeInvoice))
-  }
-  makeRequest2(id) {
-    getDetails(id)
-      .then(details => {
-        this.setState({
-          details
-        })
-      })
-      .catch(error => {
-        this.setState({
-          isError: true
-        })
-        throw new Error(error)
-      })
+    if (nextProps.params.id) {
+      this.setState({ active: nextProps.params.id })
+    } else {
+      this.setState({ active: '' })
+    }
   }
   makeRequest() {
     getInvoices()

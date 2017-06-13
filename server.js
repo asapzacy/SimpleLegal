@@ -26,8 +26,8 @@ app.get('/api/invoices', (req, res) => {
 
 app.get('/api/invoices/:id', (req, res) => {
   const id = req.params.id
-  return axios.get(`https://falcon.simplelegal.com/api/v1/invoices/${id}`, config)
-    .then(details => { console.log(details);res.send(details.data) })
+  return axios.get(`https://falcon.simplelegal.com/api/v1/invoices/${id}/`, config)
+    .then(details => res.send(details.data))
     .catch(error => res.send(error.status))
 })
 

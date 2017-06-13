@@ -7,3 +7,10 @@ export const capitalizeString = (str) => {
   }
   return result
 }
+
+export const formatPrice = (x) => {
+  return `$${x.toLocaleString(undefined, {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2 }
+  )}`
+}
