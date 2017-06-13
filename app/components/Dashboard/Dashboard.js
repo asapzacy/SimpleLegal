@@ -4,10 +4,13 @@ import { DetailsContainer } from 'containers'
 import { Overview, Details, Table, Loading } from 'components'
 import s from './Dashboard.scss'
 
-const Dashboard = ({ invoices, active }) => (
+const Dashboard = ({ invoices, active, stats }) => (
   <section className={s.container}>
     <section className={s.topHalf}>
-      <DetailsContainer invoices={invoices} active={active} />
+      { active
+        ? <DetailsContainer invoices={invoices} active={active} />
+        : <Overview stats={stats} />
+      }
     </section>
     <section className={s.bottomHalf}>
       <Table invoices={invoices} />

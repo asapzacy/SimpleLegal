@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Details } from 'components'
 import { getDetails } from 'helpers/api'
+import { formatPrice } from 'helpers/utils'
 
 class DetailsContainer extends Component {
   constructor() {
@@ -8,8 +9,7 @@ class DetailsContainer extends Component {
     this.state = {
       isLoading: true,
       isActive: false,
-      details: {},
-
+      details: {}
     }
   }
   componentDidMount() {

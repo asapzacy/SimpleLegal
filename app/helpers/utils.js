@@ -8,9 +8,43 @@ export const capitalizeString = (str) => {
   return result
 }
 
-export const formatPrice = (x) => {
-  return `$${x.toLocaleString(undefined, {
+export const formatPrice = (price) => {
+  return `$${price.toLocaleString(undefined, {
     maximumFractionDigits: 2,
     minimumFractionDigits: 2 }
   )}`
+}
+
+export const findRevenue = (data) => data.reduce((a,b) => a + b.total, 0)
+
+export const findApproved = (data) => data.filter(el => el.status === 'Approved').length
+
+export const findReceived = (data) => data.filter(el => el.status === 'Received').length
+
+export const findOldest = (data) => data[data.length - 1].invoice_date
+
+export const findNewest = (data) => data[0].invoice_date
+
+export const findTopVendor = (vendors) => {
+  let max = -Infinity
+  let vendor = ''
+  for (let item in vendors) {
+    if (vendors[item] > max) {
+      max = vendors[item]
+      vendor = item
+    }
+  }
+  return [ vendor, max ]
+}
+
+export const findLowestVendor = (vendors) => {
+  let min = Infinity
+  let vendor = ''
+  for (let item in vendors) {
+    if (vendors[item] < min) {
+      min = vendors[item]
+      vendor = item
+    }
+  }
+  return [ vendor, min ]
 }

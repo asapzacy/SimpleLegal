@@ -2,7 +2,7 @@ import React from 'react'
 import { Overview, Loading } from 'components'
 
 const Details = ({ isActive, isLoading, details, invoices }) => (
-  <section>
+  <div style={{height:'100%',width:'100%'}}>
     {
       !isActive
         ? <Overview invoices={invoices} />
@@ -10,7 +10,7 @@ const Details = ({ isActive, isLoading, details, invoices }) => (
           ? <Loading />
           : <h2>{details.vendor}</h2>
     }
-  </section>
+  </div>
 )
 
 export default Details
