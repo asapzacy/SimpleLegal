@@ -11,13 +11,10 @@
 }
 .main {
   flex:1;
-  display:flex;
   flex-direction:column;
+  composes:flexy from 'styles/_utils.scss';
 }
 .row {
   flex:1;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
+  composes:flexy from 'styles/_utils.scss';
 }

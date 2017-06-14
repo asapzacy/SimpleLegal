@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Invoices } from 'components'
 import { getInvoices } from 'helpers/api'
 import { formatPrice, findRevenue, findApproved, findReceived,
-findOldest, findNewest, findTopVendor, findLowestVendor  } from 'helpers/utils'
+findDates, findTopVendor, findLowestVendor  } from 'helpers/utils'
 
 class InvoicesContainer extends Component {
   constructor() {
@@ -12,16 +12,19 @@ class InvoicesContainer extends Component {
       isError: false,
       invoices: [],
       active: '',
-      stats: {
-        revenue: 0
-      }
+      stats: {},
+      sortedBy: '',
+      sortOrder: true
     }
+    this.sortTable = this.sortTable.bind(this)
   }
   componentDidMount() {
-    this.makeRequest()
     if (this.props.params.id) {
-      this.setState({ active: this.props.params.id })
+      this.setState({
+        active: this.props.params.id
+      })
     }
+    this.makeRequest()
     this.updateStats()
   }
   componentWillReceiveProps(nextProps) {
@@ -37,24 +40,15 @@ class InvoicesContainer extends Component {
       obj[el.vendor] = (obj[el.vendor] || 0) + 1
       return obj
     }, {})
-    console.log(vendorsByCount)
-    const topVendor = findTopVendor(vendorsByCount)
-    const lowestVendor = findLowestVendor(vendorsByCount)
-    // const invoicesByDate = [...invoices].sort((a,b) => Date.parse(a.invoice_date) > Date.parse(b.invoice_date))
     this.setState({
       stats: {
-        count: invoices.length,
         revenue: findRevenue(invoices),
+        dates: findDates(invoices),
+        count: invoices.length,
         approved: findApproved(invoices),
         received: findReceived(invoices),
         topVendor: findTopVendor(vendorsByCount),
-        lowestVendor: findLowestVendor(vendorsByCount),
-        // worstVendor: {
-        //   count: worstVendor[0],
-        //   name: worstVendor[1]
-        // }
-        // oldest: findOldest(invoicesByDate),
-        // newest: findNewest(invoicesByDate)
+        lowestVendor: findLowestVendor(vendorsByCount)
       }
     })
   }
@@ -74,8 +68,30 @@ class InvoicesContainer extends Component {
         throw new Error(error)
       })
   }
+  sortTable(term) {
+    const copy = [...this.state.invoices]
+    if (term === 'vendor') {
+      if (this.state.sortOrder) {
+        copy.sort((a,b) => a.vendor.localeCompare(b.vendor))
+      } else {
+        copy.sort((a,b) => b.vendor.localeCompare(a.vendor))
+      }
+    } else if (term === 'price') {
+      if (this.state.sortOrder) {
+        copy.sort((a,b) => b.total - a.total)
+      } else {
+        copy.sort((a,b) => a.total - b.total)
+      }
+    }
+    const newSortOrder = this.state.sortedBy && this.state.sortedBy !== term ? true : !this.state.sortOrder
+    this.setState({
+      invoices: copy,
+      sortedBy: term,
+      sortOrder: newSortOrder
+    })
+  }
   render() {
-    return <Invoices {...this.state} />
+    return <Invoices {...this.state} sortTable={this.sortTable} />
   }
 }
 

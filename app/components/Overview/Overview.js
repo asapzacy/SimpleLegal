@@ -8,15 +8,17 @@ const Overview = ({ stats }) => (
   <section className={s.container}>
     <Header />
     <main className={s.main}>
-      <div className={s.row} style={{width:'40%'}}>
+      <div className={s.row}>
         <Stat text={'Total Revenue'} stat={formatPrice(stats.revenue)} />
+        <Stat text={'Oldest Invoice'} stat={stats.dates[0]} />
+        <Stat text={'Newest Invoice'} stat={stats.dates[1]} />
       </div>
-      <div className={s.row} style={{width:'70%'}}>
+      <div className={s.row}>
         <Stat text={'Count'} stat={stats.count} />
-        <Stat text={'Approved'} stat={stats.approved} color={'darkgreen'} />
-        <Stat text={'Received'} stat={stats.received} color={'goldenrod'} />
+        <Stat text={'Approved'} stat={stats.approved} />
+        <Stat text={'Received'} stat={stats.received} />
       </div>
-      <div className={s.row} style={{width:'80%'}}>
+      <div className={s.row}>
         <Stat text={'Top Vendor'} stat={`${stats.topVendor[0]} (${stats.topVendor[1]})`} />
         <Stat text={'Lowest Vendor'} stat={`${stats.lowestVendor[0]} (${stats.lowestVendor[1]})`} />
       </div>

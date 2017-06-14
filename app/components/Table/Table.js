@@ -1,17 +1,26 @@
 import React from 'react'
 import Row from './Row'
+import ArrowDown from 'react-icons/lib/io/arrow-down-b'
+import ArrowUp from 'react-icons/lib/io/arrow-up-b'
 import s from './Table.scss'
 
-const Table = ({ invoices }) => (
+const categories = ['vendor', 'price', 'date', 'id', 'status']
+
+const Table = ({ invoices, active, sortTable, sortedBy, sortOrder }) => (
   <section className={s.tableContainer}>
     <table className={s.table}>
       <thead className={s.tableHead}>
         <tr>
-          <th>{'vendor'}</th>
-          <th style={{textAlign:'right'}}>{'price'}</th>
-          <th style={{textAlign:'right'}}>{'date'}</th>
-          <th style={{textAlign:'right'}}>{'id'}</th>
-          <th>{'status'}</th>
+          { categories.map((el, i) => (
+            <th
+              onClick={() => sortTable(el)}
+              className={sortedBy === el ? s.activated : s.category}
+              key={i}
+            >
+              {el}
+              <span className={sortedBy === el ? s.iconActivated : s.icon}>{sortOrder ? <ArrowDown /> : <ArrowUp />}</span>
+            </th>)
+        )}
         </tr>
       </thead>
       <tbody className={s.tableBody}>
@@ -23,6 +32,7 @@ const Table = ({ invoices }) => (
             id={el.invoice_number}
             status={el.status}
             api={el.id}
+            isActive={active === el.id}
             key={i}
           />)
         )}
@@ -31,21 +41,3 @@ const Table = ({ invoices }) => (
   </section>
 )
 export default Table
-
-// const Row = ({ vendor, price }) => (
-//   <tr>
-//     <td>{vendor}</td>
-//     <td>{`$${price.toLocaleString(undefined,{ maximumFractionDigits: 2 })}`}</td>
-//   </tr>
-// )
-
-const Item = ({ vendor, price, date, id, number, status }) => (
-  <tr>
-    <td>{vendor}</td>
-    <td>{`$${price.toLocaleString(undefined,{ maximumFractionDigits: 2 })}`}</td>
-    <td>{date.toLocaleString()}</td>
-    <td>{`#${number}`}</td>
-    <td>{status}</td>
-    <td><Link to={`/invoices/${id}`}>{'more info'}</Link></td>
-  </tr>
-)

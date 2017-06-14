@@ -8,28 +8,18 @@ class DetailsContainer extends Component {
     super()
     this.state = {
       isLoading: true,
-      isActive: false,
       details: {}
     }
   }
   componentDidMount() {
-    if (this.props.active) {
-      console.log('hi')
-      this.setState({ isActive: true })
-      this.makeRequest(this.props.active)
-    }
+    this.makeRequest(this.props.active)
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.active) {
       this.setState({
-        isActive: true,
-        isLoading: true
+        isLoading: true,
+        details: {}
       }, () => this.makeRequest(nextProps.active))
-    } else {
-      this.setState({
-        isActive: false,
-        isLoading: false
-      })
     }
   }
   makeRequest(id) {
@@ -42,7 +32,7 @@ class DetailsContainer extends Component {
       })
   }
   render() {
-    return <Details {...this.state} {...this.props} />
+    return <Details {...this.state} active={this.props.active} />
   }
 }
 

@@ -21,9 +21,10 @@ export const findApproved = (data) => data.filter(el => el.status === 'Approved'
 
 export const findReceived = (data) => data.filter(el => el.status === 'Received').length
 
-export const findOldest = (data) => data[data.length - 1].invoice_date
-
-export const findNewest = (data) => data[0].invoice_date
+export const findDates = (arr) => {
+  const sorted = arr.map(el => el.invoice_date).sort((a,b) => new Date(a) - new Date(b))
+  return [ sorted[0], sorted[sorted.length - 1] ]
+}
 
 export const findTopVendor = (vendors) => {
   let max = -Infinity
