@@ -88,9 +88,9 @@ class InvoicesContainer extends Component {
       }
     } else if (term === 'price') {
       if (newSortOrder) {
-        copy.sort((a,b) => b.total - a.total)
-      } else {
         copy.sort((a,b) => a.total - b.total)
+      } else {
+        copy.sort((a,b) => b.total - a.total)
       }
     } else if (term === 'id') {
       if (newSortOrder) {

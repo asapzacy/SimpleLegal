@@ -8,6 +8,7 @@
   max-width:1444px;
   margin:0 auto;
   flex:1;
+  composes:flexy from 'styles/_utils.scss';
 }
 .innerContainer > div:first-child {
   width:100%;
