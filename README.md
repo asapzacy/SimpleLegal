@@ -11,11 +11,11 @@ git clone https://github.com/zacarellano/SimpleLegal.git
 cd SimpleLegal
 yarn                              # npm install
 yarn start                        # npm run start
-touch .env                        # details below*
+touch .env                        # *details below
 ```
 then --> [localhost:8080](http://localhost:8080) for dev server or [localhost:9090](http://localhost:9090) for Node.js server (serves static `bundle.js` + proxies API requests).
 
-*\*note - I wanted to keep SimpleLegal's API key off github, so this project doesn't work without creating an `.env` file in the root directory that follows this format -*
+*\*note - I wanted to keep SimpleLegal's API key off github, so this project doesn't work without creating an `.env` file in the root directory that follows this format with the correct API token -*
 ```
 API_TOKEN=''
 ```
@@ -64,7 +64,7 @@ I follow this structure for the most of my React.js projects -
     - `/assets` - all production-ready assets (e.g. `img`, `css`, `js`, `icons`, and `other` directories)
 
 ## Going Forward
-I wanted to send in this project (although not 100% complete to at least give a decent idea of what I've been working on), a few things I'll continue working on...
+I wanted to send in this project (although not 100% complete to at least give a decent idea of what I've been working on), a few things I'd like to finish working on...
 
 - The `<Details />` view isn't styled, or really built-out yet, but the functionality is there. This is will be my top priority.
 
@@ -72,4 +72,4 @@ I wanted to send in this project (although not 100% complete to at least give a 
 
 - The passing around of state / props / methods could be a little confusing, I'm working on refactoring some code, adding comments, and simplifying what's going on.
 
-- I don't know how responsive CRMs and web apps like this are, but this web app isn't very responsive. I'll add some media queries and styling to have it looking nicer on smaller devices.
+- I don't know how responsive CRMs / web apps like this are, but this project isn't very responsive. I'll add some media queries and styling to have it looking nicer on smaller devices.
