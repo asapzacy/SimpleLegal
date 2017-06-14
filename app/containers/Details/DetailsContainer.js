@@ -10,12 +10,13 @@ class DetailsContainer extends Component {
       isLoading: true,
       details: {}
     }
+    this.hideDetails = this.hideDetails.bind(this)
   }
   componentDidMount() {
     this.makeRequest(this.props.active)
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.active) {
+    if (nextProps.active && nextProps.active !== this.props.active) {
       this.setState({
         isLoading: true,
         details: {}
@@ -31,9 +32,16 @@ class DetailsContainer extends Component {
         })
       })
   }
-  render() {
-    return <Details {...this.state} active={this.props.active} />
+  hideDetails() {
+    this.context.router.push('/invoices')
   }
+  render() {
+    return <Details {...this.state} active={this.props.active} hideDetails={this.hideDetails} />
+  }
+}
+
+DetailsContainer.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default DetailsContainer

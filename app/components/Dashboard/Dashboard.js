@@ -4,7 +4,7 @@ import { DetailsContainer } from 'containers'
 import { Overview, Details, Table, Loading } from 'components'
 import s from './Dashboard.scss'
 
-const Dashboard = ({ invoices, active, stats, sortTable, sortedBy, sortOrder }) => (
+const Dashboard = ({ invoices, active, stats, sortTable, sortedBy, sortOrder, showDetails }) => (
   <section className={s.container}>
     <section className={s.topHalf}>
       { active
@@ -13,7 +13,8 @@ const Dashboard = ({ invoices, active, stats, sortTable, sortedBy, sortOrder }) 
       }
     </section>
     <section className={s.bottomHalf}>
-      <Table invoices={invoices} active={active} sortTable={sortTable} sortedBy={sortedBy} sortOrder={sortOrder} />
+      <Table invoices={invoices} active={active} sortTable={sortTable} sortedBy={sortedBy} sortOrder={sortOrder}
+        showDetails={showDetails} />
     </section>
   </section>
 )

@@ -14,7 +14,7 @@ const Sidebar = () => (
       <ul className={s.list}>
         { app_pages.map((el, i) => (
             <li className={s.item} key={i}>
-              <Link to={el.url}  className={s.link} title={`SimpleLegal | ${el.name}`} activeClassName={'active'} onlyActiveOnIndex>
+              <Link to={el.url}  className={s.link} title={`SimpleLegal | ${el.name}`} activeClassName={el.isHomePage ? '' : 'active'}>
                 { !el.isHomePage &&
                   <span className={s.icon} style={createBgImg(el.icon)}></span>
                 }

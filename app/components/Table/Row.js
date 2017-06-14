@@ -1,20 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { formatPrice, formatId } from 'helpers/utils'
+import s from './Row.scss'
 
-const Row = ({ vendor, price, date, id, status, api, isActive }) => (
-  <tr style={{backgroundColor:isActive && 'purple'}}>
+const Row = ({ vendor, price, date, id, status, api, isActive, showDetails }) => (
+  <tr className={isActive ? s.rowActivated : s.row} onClick={() => showDetails(api)}>
+    <td>{date}</td>
     <td>{vendor}</td>
-    <td style={{textAlign:'right'}}>{formatPrice(price)}</td>
-    <td style={{textAlign:'right'}}>{date}</td>
-    <td style={{textAlign:'right'}}>{`#${id}`}</td>
+    <td>{`#${id}`}</td>
+    <td>{formatPrice(price)}</td>
     <td>{status}</td>
-    <td>
-      { isActive
-        ? <Link to={'/invoices/'}>{'x'}</Link>
-        : <Link to={`/invoices/${api}`}>{'more info'}</Link>
-      }
-    </td>
   </tr>
 )
 

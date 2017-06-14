@@ -4,9 +4,9 @@ import ArrowDown from 'react-icons/lib/io/arrow-down-b'
 import ArrowUp from 'react-icons/lib/io/arrow-up-b'
 import s from './Table.scss'
 
-const categories = ['vendor', 'price', 'date', 'id', 'status']
+const categories = [ 'date', 'vendor', 'id', 'price', 'status']
 
-const Table = ({ invoices, active, sortTable, sortedBy, sortOrder }) => (
+const Table = ({ invoices, active, sortTable, sortedBy, sortOrder, showDetails }) => (
   <section className={s.tableContainer}>
     <table className={s.table}>
       <thead className={s.tableHead}>
@@ -33,6 +33,7 @@ const Table = ({ invoices, active, sortTable, sortedBy, sortOrder }) => (
             status={el.status}
             api={el.id}
             isActive={active === el.id}
+            showDetails={showDetails}
             key={i}
           />)
         )}

@@ -1,8 +1,6 @@
 
 /* -------  base components  ------- */
-export Header from './Header/Header'
 export Sidebar from './Sidebar/Sidebar'
-export Footer from './Footer/Footer'
 
 /* -------  page components  ------- */
 export Home from './Home/Home'

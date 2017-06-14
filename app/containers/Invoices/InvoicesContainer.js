@@ -17,15 +17,17 @@ class InvoicesContainer extends Component {
       sortOrder: true
     }
     this.sortTable = this.sortTable.bind(this)
+    this.showDetails = this.showDetails.bind(this)
   }
   componentDidMount() {
-    if (this.props.params.id) {
-      this.setState({
-        active: this.props.params.id
-      })
-    }
+    this.init()
     this.makeRequest()
     this.updateStats()
+  }
+  init() {
+    this.setState({
+      active: this.props.params.id || ''
+    })
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.id) {
@@ -58,8 +60,9 @@ class InvoicesContainer extends Component {
         this.setState({
           isLoading: false,
           invoices: data.results
-        }, () => this.updateStats())
+        }, () => this.sortTable('date'))
       })
+      .then(() => this.updateStats())
       .catch(error => {
         this.setState({
           isLoading: false,
@@ -70,29 +73,55 @@ class InvoicesContainer extends Component {
   }
   sortTable(term) {
     const copy = [...this.state.invoices]
+    const newSortOrder = this.state.sortedBy && this.state.sortedBy !== term ? true : !this.state.sortOrder
     if (term === 'vendor') {
-      if (this.state.sortOrder) {
+      if (newSortOrder) {
         copy.sort((a,b) => a.vendor.localeCompare(b.vendor))
       } else {
         copy.sort((a,b) => b.vendor.localeCompare(a.vendor))
       }
+    } else if (term === 'status') {
+      if (newSortOrder) {
+        copy.sort((a,b) => a.status.localeCompare(b.status))
+      } else {
+        copy.sort((a,b) => b.status.localeCompare(a.status))
+      }
     } else if (term === 'price') {
-      if (this.state.sortOrder) {
+      if (newSortOrder) {
         copy.sort((a,b) => b.total - a.total)
       } else {
         copy.sort((a,b) => a.total - b.total)
       }
+    } else if (term === 'id') {
+      if (newSortOrder) {
+        copy.sort((a,b) => parseInt(a.invoice_number) - parseInt(b.invoice_number))
+      } else {
+        copy.sort((a,b) => parseInt(b.invoice_number) - parseInt(a.invoice_number))
+      }
+    } else if (term === 'date') {
+      if (newSortOrder) {
+        copy.sort((a,b) => new Date(a.invoice_date) - new Date(b.invoice_date))
+      } else {
+        copy.sort((a,b) => new Date(b.invoice_date) - new Date(a.invoice_date))
+      }
     }
-    const newSortOrder = this.state.sortedBy && this.state.sortedBy !== term ? true : !this.state.sortOrder
     this.setState({
       invoices: copy,
       sortedBy: term,
       sortOrder: newSortOrder
     })
   }
-  render() {
-    return <Invoices {...this.state} sortTable={this.sortTable} />
+  showDetails(api) {
+    console.log(api)
+    this.context.router.push(`/invoices/${api}`)
   }
+  render() {
+    return <Invoices {...this.state} sortTable={this.sortTable} showDetails={this.showDetails} />
+  }
+}
+
+InvoicesContainer.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default InvoicesContainer

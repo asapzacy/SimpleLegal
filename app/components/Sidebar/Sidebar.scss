@@ -18,9 +18,10 @@
   display:flex;
   align-items:center;
   padding:0.8em 0.4em;
-  transition:background 0.44s;
+  transition:background 0.44s,color 0.44s;
 }
 .link:hover, :global(.active) {
+  color:$darkblue;
   background:$real_white;
 }
 .icon {

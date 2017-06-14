@@ -1,14 +1,16 @@
 import React from 'react'
 import { Loading } from 'components'
 import { formatPrice } from 'helpers/utils'
+import Close from 'react-icons/lib/io/ios-close-empty'
 
-const Details = ({ isLoading, details }) => (
+const Details = ({ isLoading, details, hideDetails }) => (
   <div style={{height:'100%',width:'100%'}}>
     { isLoading && !Object.keys(details).length
       ? <Loading />
       : <section>
           <header>
             <h2>{`Invoice: ${details.invoice_number}`}</h2>
+            <span onClick={hideDetails} style={{float:'right'}}><Close /></span>
           </header>
           <main style={{backgroundColor:'white'}}>
             <h3>{details.vendor}</h3>
