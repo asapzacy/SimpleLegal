@@ -10,11 +10,7 @@ const Table = ({ invoices, activePage, sortTable, sortedBy, sortOrder, showDetai
     <thead className={s.tableHead}>
       <tr>
         { table_categories.map((el, i) => (
-          <th
-            onClick={() => sortTable(el)}
-            className={sortedBy === el ? s.activated : s.category}
-            key={i}
-          >
+          <th onClick={() => sortTable(el)} className={s.category} key={i}>
             {el}
             <span className={sortedBy === el ? s.iconActivated : s.icon}>
               { sortOrder ? <ArrowDown /> : <ArrowUp /> }
