@@ -5,7 +5,7 @@ import ArrowDown from 'react-icons/lib/io/arrow-down-b'
 import ArrowUp from 'react-icons/lib/io/arrow-up-b'
 import s from './Table.scss'
 
-const Table = ({ invoices, active, sortTable, sortedBy, sortOrder, showDetails }) => (
+const Table = ({ invoices, activePage, sortTable, sortedBy, sortOrder, showDetails }) => (
   <table className={s.table}>
     <thead className={s.tableHead}>
       <tr>
@@ -13,7 +13,6 @@ const Table = ({ invoices, active, sortTable, sortedBy, sortOrder, showDetails }
           <th
             onClick={() => sortTable(el)}
             className={sortedBy === el ? s.activated : s.category}
-            // style={{width:el === 'vendor' && '33.3%'}}
             key={i}
           >
             {el}
@@ -33,7 +32,7 @@ const Table = ({ invoices, active, sortTable, sortedBy, sortOrder, showDetails }
           id={el.invoice_number}
           status={el.status}
           api={el.id}
-          isActive={active === el.id}
+          isActive={activePage === el.id}
           showDetails={showDetails}
           key={i}
         />)

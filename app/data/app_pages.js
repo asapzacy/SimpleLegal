@@ -14,7 +14,7 @@ export const app_pages = [
   {
     name: 'Invoices',
     url: '/invoices',
-    icon: 'copy'
+    icon: 'file'
   },
   {
     name: 'Reports',

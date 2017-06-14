@@ -21,6 +21,7 @@ $large:999px;
 $xlarge:1331px;
 $xxlarge:1663px;
 
-/* ---  box shadow  ---- */
+/* ---   box-shadows   ---- */
 /* ------------------------ */
-$boxy:0 7.5px 17.5px rgba(50,50,93,.1), 0 2.5px 7.5px rgba(0,0,0,.07);
+$shadow_small:rgba(50,50,93,.1) 0 7.5px 17.5px,rgba(0,0,0,.07) 0 2.5px 7.5px;
+$shadow_large:rgba(50,50,93,0.1) 0 9px 17.5px,rgba(0,0,0,0.07) 0 4px 7.5px;

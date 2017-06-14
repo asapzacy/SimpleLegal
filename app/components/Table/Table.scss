@@ -54,5 +54,6 @@ th, td {
   background:$real_white;
 }
 .activated {
+  font-weight:600;
   composes:category;
 }
