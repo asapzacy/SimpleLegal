@@ -18,7 +18,7 @@
   composes:half;
 }
 .half > :first-child {
-  border:2px solid $real_white !important;
+  border:3px solid $real_white;
   background:$white;
   box-shadow:$boxy;
 }

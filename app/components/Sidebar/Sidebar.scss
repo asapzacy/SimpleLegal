@@ -1,7 +1,7 @@
 
 /* -------  Sidebar  ------- */
 .container {
-  width:240px;
+  min-width:240px;
   background:$grey1;
   border-right:3px solid $white;
 }

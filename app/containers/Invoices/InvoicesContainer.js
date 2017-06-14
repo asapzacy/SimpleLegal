@@ -73,7 +73,7 @@ class InvoicesContainer extends Component {
   }
   sortTable(term = 'date') {
     const copy = [...this.state.invoices]
-    const newSortOrder = this.state.sortedBy && this.state.sortedBy !== term ? true : !this.state.sortOrder
+    const newSortOrder = this.state.sortedBy !== term ? true : !this.state.sortOrder
     if (term === 'vendor') {
       if (newSortOrder) {
         copy.sort((a,b) => a.vendor.localeCompare(b.vendor))
@@ -100,9 +100,9 @@ class InvoicesContainer extends Component {
       }
     } else if (term === 'date') {
       if (newSortOrder) {
-        copy.sort((a,b) => new Date(a.invoice_date) - new Date(b.invoice_date))
-      } else {
         copy.sort((a,b) => new Date(b.invoice_date) - new Date(a.invoice_date))
+      } else {
+        copy.sort((a,b) => new Date(a.invoice_date) - new Date(b.invoice_date))
       }
     }
     this.setState({

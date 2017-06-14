@@ -1,14 +1,11 @@
 
 /* -------  Row  ------- */
 .row {
-  font-weight:normal;
-
-  transition:color 0.44s, background-color 0.44s;
+  transition:color 0.44s;
 }
 .row:hover {
   cursor:pointer;
   color:$darkblue;
-  background:$real_white !important;
 }
 
 .rowActivated {

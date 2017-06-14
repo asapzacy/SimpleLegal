@@ -5,6 +5,8 @@
   composes:fully from 'styles/_utils.scss';
 }
 .innerContainer {
+  max-width:1444px;
+  margin:0 auto;
   flex:1;
 }
 .innerContainer > div:first-child {
