@@ -1,0 +1,25 @@
+
+/* -------  Error  ------- */
+.container {
+  font-size:1.1em;
+  composes:flexy fully from 'styles/_utils.scss'
+}
+.text {
+  letter-spacing:0;
+  text-align:center;
+  padding:0.8em 1.6em;
+  border:1px solid currentColor;
+  border-radius:2px;
+}
+
+@media only screen and (min-width:$medium) {
+  .text {
+    font-size:1.2em;
+  }
+}
+
+@media only screen and (min-width:$xlarge) {
+  .text {
+    font-size:1.3em;
+  }
+}

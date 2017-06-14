@@ -4,7 +4,7 @@ import Stat from './Stat'
 import { formatPrice } from 'helpers/utils'
 import s from './Overview.scss'
 
-const Overview = ({ stats }) => (
+const Overview = ({ stats, filterTable }) => (
   <section className={s.container}>
     <Header />
     <main className={s.main}>
@@ -19,7 +19,7 @@ const Overview = ({ stats }) => (
         <Stat text={'Received'} stat={stats.received} />
       </div>
       <div className={s.row}>
-        <Stat text={'Top Vendor'} stat={`${stats.topVendor[0]} (${stats.topVendor[1]})`} />
+        <Stat filterTable={filterTable} text={'Top Vendor'} stat={`${stats.topVendor[0]} (${stats.topVendor[1]})`} />
         <Stat text={'Lowest Vendor'} stat={`${stats.lowestVendor[0]} (${stats.lowestVendor[1]})`} />
       </div>
     </main>

@@ -1,9 +1,8 @@
 
 /* -------  Main  ------- */
 .outerContainer {
-  width:100%;
-  height:100%;
   display:flex;
+  composes:fully from 'styles/_utils.scss';
 }
 .innerContainer {
   flex:1;

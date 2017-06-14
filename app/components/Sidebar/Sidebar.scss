@@ -1,18 +1,15 @@
 
 /* -------  Sidebar  ------- */
 .container {
-  min-width:240px;
+  width:240px;
   background:$grey1;
-  border-right:1px solid $grey4;
+  border-right:3px solid $white;
 }
 .menu {
   font-size:1.2em;
 }
-.list {
-
-}
 .item {
-  border-bottom:1px solid $grey4;
+  border-bottom:3px solid $white;
 }
 .link {
   display:flex;

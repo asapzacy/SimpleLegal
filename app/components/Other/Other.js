@@ -2,9 +2,9 @@ import React from 'react'
 import { capitalizeString } from 'helpers/utils'
 import s from './Other.scss'
 
-const Other = ({ route }) => (
+const Other = (props) => (
   <section className={s.container}>
-    <h1 className={s.title}>{capitalizeString(route.path)}</h1>
+    <h1 className={s.title}>{capitalizeString(props.route.path)}</h1>
   </section>
 )
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Invoices } from 'components'
 import { getInvoices } from 'helpers/api'
-import { formatPrice, findRevenue, findApproved, findReceived,
-findDates, findTopVendor, findLowestVendor  } from 'helpers/utils'
+import { formatPrice } from 'helpers/utils'
+import { findRevenue, findApproved, findReceived, findDates,
+  findTopVendor, findLowestVendor } from 'helpers/stats'
 
 class InvoicesContainer extends Component {
   constructor() {
@@ -11,30 +12,46 @@ class InvoicesContainer extends Component {
       isLoading: true,
       isError: false,
       invoices: [],
-      active: '',
+      cache: [],
+      activePage: '',
       stats: {},
       sortedBy: '',
       sortOrder: true
     }
     this.sortTable = this.sortTable.bind(this)
     this.showDetails = this.showDetails.bind(this)
+    this.filterTable = this.filterTable.bind(this)
   }
   componentDidMount() {
-    this.init()
+    this.init(this.props.params.id)
     this.makeRequest()
     this.updateStats()
   }
-  init() {
+  componentWillReceiveProps(nextProps) {
+    this.init(nextProps.params.id)
+  }
+  init(id) {
     this.setState({
-      active: this.props.params.id || ''
+      activePage: id || ''
     })
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.params.id) {
-      this.setState({ active: nextProps.params.id })
-    } else {
-      this.setState({ active: '' })
-    }
+  makeRequest() {
+    getInvoices()
+      .then(data => {
+        this.setState({
+          isLoading: false,
+          invoices: data.results,
+          cache: data.results
+        }, () => this.sortTable())
+      })
+      .then(() => this.updateStats())
+      .catch(error => {
+        this.setState({
+          isLoading: false,
+          isError: true
+        })
+        throw new Error(error)
+      })
   }
   updateStats() {
     const { invoices } = this.state
@@ -54,24 +71,7 @@ class InvoicesContainer extends Component {
       }
     })
   }
-  makeRequest() {
-    getInvoices()
-      .then(data => {
-        this.setState({
-          isLoading: false,
-          invoices: data.results
-        }, () => this.sortTable('date'))
-      })
-      .then(() => this.updateStats())
-      .catch(error => {
-        this.setState({
-          isLoading: false,
-          isError: true
-        })
-        throw new Error(error)
-      })
-  }
-  sortTable(term) {
+  sortTable(term = 'date') {
     const copy = [...this.state.invoices]
     const newSortOrder = this.state.sortedBy && this.state.sortedBy !== term ? true : !this.state.sortOrder
     if (term === 'vendor') {
@@ -111,12 +111,23 @@ class InvoicesContainer extends Component {
       sortOrder: newSortOrder
     })
   }
+  filterTable() {
+    const copy = [...this.state.invoices].filter(el => el.vendor === 'Rosato and Associates')
+    console.log(copy)
+    this.setState({ invoices: copy })
+  }
   showDetails(api) {
-    console.log(api)
     this.context.router.push(`/invoices/${api}`)
   }
   render() {
-    return <Invoices {...this.state} sortTable={this.sortTable} showDetails={this.showDetails} />
+    return (
+      <Invoices
+        {...this.state}
+        sortTable={this.sortTable}
+        showDetails={this.showDetails}
+        filterTable={this.filterTable}
+      />
+    )
   }
 }
 

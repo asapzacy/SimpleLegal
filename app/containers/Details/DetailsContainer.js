@@ -13,14 +13,14 @@ class DetailsContainer extends Component {
     this.hideDetails = this.hideDetails.bind(this)
   }
   componentDidMount() {
-    this.makeRequest(this.props.active)
+    this.makeRequest(this.props.activePage)
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.active && nextProps.active !== this.props.active) {
+    if (nextProps.activePage && nextProps.activePage !== this.props.activePage) {
       this.setState({
         isLoading: true,
         details: {}
-      }, () => this.makeRequest(nextProps.active))
+      }, () => this.makeRequest(nextProps.activePage))
     }
   }
   makeRequest(id) {
@@ -36,7 +36,7 @@ class DetailsContainer extends Component {
     this.context.router.push('/invoices')
   }
   render() {
-    return <Details {...this.state} active={this.props.active} hideDetails={this.hideDetails} />
+    return <Details {...this.state} activePage={this.props.activePage} hideDetails={this.hideDetails} />
   }
 }
 

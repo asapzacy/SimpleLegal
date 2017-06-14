@@ -1,7 +1,8 @@
 
-/* -------  base container  ------- */
+/* -------  main container  ------- */
 export MainContainer from './Main/MainContainer'
 
-/* -------  random containers  ------- */
+/* -------  base containers  ------- */
 export InvoicesContainer from './Invoices/InvoicesContainer'
+export TableContainer from './Table/TableContainer'
 export DetailsContainer from './Details/DetailsContainer'

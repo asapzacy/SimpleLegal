@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { MainContainer, NotFoundContainer, InvoicesContainer } from 'containers'
+import { MainContainer, InvoicesContainer } from 'containers'
 import { Home, Other, NotFound } from 'components'
 
 const routes = (
