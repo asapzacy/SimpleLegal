@@ -14,7 +14,7 @@ const Overview = ({ stats, filterTable }) => (
         <Stat text={'Newest Invoice'} stat={stats.dates[1]} />
       </div>
       <div className={s.row}>
-        <Stat text={'Count'} stat={stats.count} />
+        <Stat text={'Total'} stat={stats.count} />
         <Stat text={'Approved'} stat={stats.approved} />
         <Stat text={'Received'} stat={stats.received} />
       </div>

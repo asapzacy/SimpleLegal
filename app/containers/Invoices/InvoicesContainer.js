@@ -71,6 +71,8 @@ class InvoicesContainer extends Component {
       }
     })
   }
+  // this is very ugly code - I know.. planning on splitting up the function
+  // into multiple use cases, and also moving it to a utils.js type file
   sortTable(term = 'date') {
     const copy = [...this.state.invoices]
     const newSortOrder = this.state.sortedBy !== term ? true : !this.state.sortOrder
