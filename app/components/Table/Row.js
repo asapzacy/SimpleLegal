@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 import { formatPrice } from 'helpers/utils'
 import s from './Row.scss'
 
