@@ -68,7 +68,7 @@ I wanted to send in this project (although not 100% complete to at least give a 
 
 - The `<Details />` view isn't styled, or really built-out yet, but the functionality is there. This is will be my top priority.
 
-- When you click a `<Stat />` box on the main `<Overview />` component, only clicking on 'Top Vendors' will filter `this.state.invoices` to show only 'Rosato and Associates' data. I would like to finish this functionality and be able to click on each box, filter the data, and also exit out of the filter by clicking an 'X', to show the initial `this.state.invoices`.
+- ~~When you click a `<Stat />` box on the main `<Overview />` component, only clicking on 'Top Vendors' will filter `this.state.invoices` to show only 'Rosato and Associates' data. I would like to finish this functionality and be able to click on each box, filter the data, and also exit out of the filter by clicking an 'X', to show the initial `this.state.invoices`.~~
 
 - The passing around of state / props / methods could be a little confusing, I'm working on refactoring some code, adding comments, and simplifying what's going on.
 

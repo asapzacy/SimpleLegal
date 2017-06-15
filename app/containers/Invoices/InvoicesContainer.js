@@ -113,9 +113,24 @@ class InvoicesContainer extends Component {
       sortOrder: newSortOrder
     })
   }
-  filterTable() {
-    const copy = [...this.state.invoices].filter(el => el.vendor === 'Rosato and Associates')
-    console.log(copy)
+  filterTable(term) {
+    let copy = [...this.state.cache]
+    const { stats } = this.state
+    if (term === 'Top Vendor') {
+      copy = copy.filter(el => el.vendor === stats.topVendor[0])
+    } else if (term === 'Lowest Vendor') {
+      copy = copy.filter(el => el.vendor === stats.lowestVendor[0])
+    } else if (term === 'Approved') {
+      copy = copy.filter(el => el.status === 'Approved')
+    } else if (term === 'Received') {
+      copy = copy.filter(el => el.status === 'Received')
+    } else if (term === 'Oldest Invoice') {
+      copy = copy.filter(el => el.invoice_date === stats.dates[0])
+    } else if (term === 'Newest Invoice') {
+      copy = copy.filter(el => el.invoice_date === stats.dates[1])
+    } else {
+      copy = copy
+    }
     this.setState({ invoices: copy })
   }
   showDetails(api) {

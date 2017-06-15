@@ -9,18 +9,18 @@ const Overview = ({ stats, filterTable }) => (
     <Header />
     <main className={s.main}>
       <div className={s.row}>
-        <Stat text={'Total Revenue'} stat={formatPrice(stats.revenue)} />
-        <Stat text={'Oldest Invoice'} stat={stats.dates[0]} />
-        <Stat text={'Newest Invoice'} stat={stats.dates[1]} />
+        <Stat fn={filterTable} text={'Total Revenue'} stat={formatPrice(stats.revenue)} />
+        <Stat fn={filterTable} text={'Oldest Invoice'} stat={stats.dates[0]} />
+        <Stat fn={filterTable} text={'Newest Invoice'} stat={stats.dates[1]} />
       </div>
       <div className={s.row}>
-        <Stat text={'Total'} stat={stats.count} />
-        <Stat text={'Approved'} stat={stats.approved} />
-        <Stat text={'Received'} stat={stats.received} />
+        <Stat fn={filterTable} text={'Total'} stat={stats.count} />
+        <Stat fn={filterTable} text={'Approved'} stat={stats.approved} />
+        <Stat fn={filterTable} text={'Received'} stat={stats.received} />
       </div>
       <div className={s.row}>
-        <Stat filterTable={filterTable} text={'Top Vendor'} stat={`${stats.topVendor[0]} (${stats.topVendor[1]})`} />
-        <Stat text={'Lowest Vendor'} stat={`${stats.lowestVendor[0]} (${stats.lowestVendor[1]})`} />
+        <Stat fn={filterTable} text={'Top Vendor'} stat={`${stats.topVendor[0]} (${stats.topVendor[1]})`} />
+        <Stat fn={filterTable} text={'Lowest Vendor'} stat={`${stats.lowestVendor[0]} (${stats.lowestVendor[1]})`} />
       </div>
     </main>
   </section>
