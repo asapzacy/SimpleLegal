@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 import { Loading, Error, Dashboard } from 'components'
 import s from './Invoices.scss'
 
