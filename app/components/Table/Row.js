@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { formatPrice, formatId } from 'helpers/utils'
+import { formatPrice } from 'helpers/utils'
 import s from './Row.scss'
 
 const Row = ({ vendor, price, date, id, status, api, isActive, showDetails }) => (
