@@ -1,13 +1,13 @@
 
 /* -------  Header  ------- */
 .container {
-  padding:0 1em;
+  margin-bottom:1em;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 .title {
-
+  border-bottom:1px solid $black;
 }
 .icon {
   cursor:pointer;

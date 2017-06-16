@@ -1,1 +1,12 @@
-;
+
+/* -------  Line  ------- */
+.container {
+  margin-bottom:1em;
+}
+.bar {
+  width:6.66em;
+  height:2px;
+  display:block;
+  background:$grey2;
+  margin-top:1em;
+}

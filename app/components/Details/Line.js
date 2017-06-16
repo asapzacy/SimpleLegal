@@ -1,8 +1,9 @@
 import React from 'react'
 import { formatPrice } from 'helpers/utils'
+import s from './Line.scss'
 
 const Matter = ({ timekeeper, level, date, price, description }) => (
-  <article style={{marginBottom:'2em'}}>
+  <article className={s.container}>
     <h5>
       <strong>{`Timekeeper: `}</strong>
       <span>{timekeeper ? `${timekeeper} (${level})` : '-'}</span>
@@ -19,6 +20,7 @@ const Matter = ({ timekeeper, level, date, price, description }) => (
       <strong>{`Description: `}</strong>
       <span>{description}</span>
     </h5>
+    <span className={s.bar}></span>
   </article>
 )
 
