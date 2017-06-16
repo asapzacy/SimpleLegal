@@ -3,12 +3,13 @@ import { DetailsContainer } from 'containers'
 import { Overview, Details, Table } from 'components'
 import s from './Dashboard.scss'
 
-const Dashboard = ({ invoices, activePage, stats, sortTable, sortedBy, sortOrder, showDetails, filterTable }) => (
+const Dashboard = ({ invoices, activePage, stats, sortTable, sortedBy, sortOrder,
+  showDetails, filterTable, filteredBy }) => (
   <section className={s.container}>
     <section className={s.topHalf}>
       { activePage
         ? <DetailsContainer invoices={invoices} activePage={activePage} />
-        : <Overview stats={stats} filterTable={filterTable} />
+        : <Overview stats={stats} filterTable={filterTable} filteredBy={filteredBy} />
       }
     </section>
     <section className={s.bottomHalf}>

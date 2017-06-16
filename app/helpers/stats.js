@@ -1,4 +1,6 @@
-export const findRevenue = (data) => data.reduce((a,b) => a + b.total, 0)
+import { formatPrice } from './utils'
+
+export const findRevenue = (data) => formatPrice(data.reduce((a,b) => a + b.total, 0))
 
 export const findApproved = (data) => data.filter(el => el.status === 'Approved').length
 

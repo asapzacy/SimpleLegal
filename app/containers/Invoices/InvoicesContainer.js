@@ -16,7 +16,8 @@ class InvoicesContainer extends Component {
       activePage: '',
       stats: {},
       sortedBy: '',
-      sortOrder: true
+      sortOrder: true,
+      filteredBy: ''
     }
     this.sortTable = this.sortTable.bind(this)
     this.showDetails = this.showDetails.bind(this)
@@ -116,22 +117,27 @@ class InvoicesContainer extends Component {
   filterTable(term) {
     let copy = [...this.state.cache]
     const { stats } = this.state
-    if (term === 'Top Vendor') {
-      copy = copy.filter(el => el.vendor === stats.topVendor[0])
-    } else if (term === 'Lowest Vendor') {
-      copy = copy.filter(el => el.vendor === stats.lowestVendor[0])
-    } else if (term === 'Approved') {
-      copy = copy.filter(el => el.status === 'Approved')
-    } else if (term === 'Received') {
-      copy = copy.filter(el => el.status === 'Received')
-    } else if (term === 'Oldest Invoice') {
-      copy = copy.filter(el => el.invoice_date === stats.dates[0])
-    } else if (term === 'Newest Invoice') {
-      copy = copy.filter(el => el.invoice_date === stats.dates[1])
+    if (term !== this.state.filteredBy) {
+      if (term === 'Top Vendor') {
+        copy = copy.filter(el => el.vendor === stats.topVendor[0])
+      } else if (term === 'Lowest Vendor') {
+        copy = copy.filter(el => el.vendor === stats.lowestVendor[0])
+      } else if (term === 'Approved') {
+        copy = copy.filter(el => el.status === 'Approved')
+      } else if (term === 'Received') {
+        copy = copy.filter(el => el.status === 'Received')
+      } else if (term === 'Oldest Invoice') {
+        copy = copy.filter(el => el.invoice_date === stats.dates[0])
+      } else if (term === 'Newest Invoice') {
+        copy = copy.filter(el => el.invoice_date === stats.dates[1])
+      }
     } else {
-      copy = copy
+      term = ''
     }
-    this.setState({ invoices: copy })
+    this.setState({
+      invoices: copy,
+      filteredBy: term
+    })
   }
   showDetails(api) {
     this.context.router.push(`/invoices/${api}`)
