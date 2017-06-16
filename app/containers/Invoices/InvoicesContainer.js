@@ -42,7 +42,6 @@ class InvoicesContainer extends Component {
         this.setState({
           isLoading: false,
           invoices: data.results,
-          cache: data.results
         }, () => this.sortTable())
       })
       .then(() => this.updateStats())
@@ -110,6 +109,7 @@ class InvoicesContainer extends Component {
     }
     this.setState({
       invoices: copy,
+      cache: Object.keys(this.state.cache).length ? this.state.cache : copy,
       sortedBy: term,
       sortOrder: newSortOrder
     })
