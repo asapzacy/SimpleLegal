@@ -5,7 +5,7 @@ const Matter = ({ timekeeper, level, date, price, description }) => (
   <article style={{marginBottom:'2em'}}>
     <h5>
       <strong>{`Timekeeper: `}</strong>
-      <span>{`${timekeeper} (${level})`}</span>
+      <span>{timekeeper ? `${timekeeper} (${level})` : '-'}</span>
     </h5>
     <h5>
       <strong>{`Date: `}</strong>
