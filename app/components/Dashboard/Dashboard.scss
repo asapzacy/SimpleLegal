@@ -18,6 +18,8 @@
   composes:half;
 }
 .half > :first-child {
+  height:100%;
+  width:100%;
   border:3px solid $real_white;
   background:$white;
   box-shadow:$shadow_small;

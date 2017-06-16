@@ -8,6 +8,7 @@ class DetailsContainer extends Component {
     super()
     this.state = {
       isLoading: true,
+      isError: false,
       details: {}
     }
     this.hideDetails = this.hideDetails.bind(this)
@@ -19,6 +20,7 @@ class DetailsContainer extends Component {
     if (nextProps.activePage && nextProps.activePage !== this.props.activePage) {
       this.setState({
         isLoading: true,
+        isError: false,
         details: {}
       }, () => this.makeRequest(nextProps.activePage))
     }
@@ -31,12 +33,25 @@ class DetailsContainer extends Component {
           details
         })
       })
+      .catch(error => {
+        this.setState({
+          isLoading: false,
+          isError: true
+        })
+        throw new Error(error)
+      })
   }
   hideDetails() {
     this.context.router.push('/invoices')
   }
   render() {
-    return <Details {...this.state} activePage={this.props.activePage} hideDetails={this.hideDetails} />
+    return (
+      <Details
+        {...this.state}
+        activePage={this.props.activePage}
+        hideDetails={this.hideDetails}
+      />
+    )
   }
 }
 

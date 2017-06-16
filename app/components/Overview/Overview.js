@@ -12,46 +12,46 @@ const Overview = ({ stats, filterTable, filteredBy }) => (
         <Stat
           fn={filterTable}
           text={'Total Revenue'}
-          isActive={filteredBy === 'Total Revenue'}
+          filteredBy={filteredBy}
           stat={stats.revenue} />
         <Stat
           fn={filterTable}
           text={'Oldest Invoice'}
-          isActive={filteredBy === 'Oldest Invoice'}
+          filteredBy={filteredBy}
           stat={stats.dates[0]} />
         <Stat
           fn={filterTable}
           text={'Newest Invoice'}
-          isActive={filteredBy === 'Newest Invoice'}
+          filteredBy={filteredBy}
           stat={stats.dates[1]} />
       </div>
       <div className={s.row}>
         <Stat
           fn={filterTable}
           text={'Total'}
-          isActive={filteredBy === 'Total'}
+          filteredBy={filteredBy}
           stat={stats.count} />
         <Stat
           fn={filterTable}
           text={'Approved'}
-          isActive={filteredBy === 'Approved'}
+          filteredBy={filteredBy}
           stat={stats.approved} />
         <Stat
           fn={filterTable}
           text={'Received'}
-          isActive={filteredBy === 'Received'}
+          filteredBy={filteredBy}
           stat={stats.received} />
       </div>
       <div className={s.row}>
         <Stat
           fn={filterTable}
           text={'Top Vendor'}
-          isActive={filteredBy === 'Top Vendor'}
+          filteredBy={filteredBy}
           stat={`${stats.topVendor[0]} (${stats.topVendor[1]})`} />
         <Stat
           text={'Lowest Vendor'}
           fn={filterTable}
-          isActive={filteredBy === 'Lowest Vendor'}
+          filteredBy={filteredBy}
           stat={`${stats.lowestVendor[0]} (${stats.lowestVendor[1]})`} />
       </div>
     </main>

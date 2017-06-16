@@ -1,13 +1,9 @@
 
 /* -------  Row  ------- */
 .row {
-  transition:color 0.44s;
+  transition:font-weight 0.12s;
 }
-.row:hover {
-  cursor:pointer;
-  color:$darkblue;
-}
-.rowActivated {
+.row:hover, .rowActivated {
   cursor:pointer;
   font-weight:600;
 }
