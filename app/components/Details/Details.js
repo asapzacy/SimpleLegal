@@ -20,7 +20,7 @@ const Details = ({ isLoading, isError, details, hideDetails }) => (
               <h5>{`Invoice date: ${details.billing_start_date}`}</h5>
               <h5>{`Billing date (start/end): ${details.billing_start_date} - ${details.billing_end_date}`}</h5>
               <h3 style={{margin:'0.33em 0',padding:'0 0.12em',borderBottom:'1px solid #070707',display:'inline-block',lineHeight:1.25}}>
-                {'Lines: '}
+                {`Lines (${details.lines.length}):`}
               </h3>
               <div style={{maxHeight:'150px',overflow:'auto',background:'#fff',border:'2px solid #e0e0e0',padding:'1em 1em 0'}}>
                 { details.lines.map((el, i) => (
