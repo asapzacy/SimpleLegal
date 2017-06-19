@@ -32,7 +32,7 @@ API_TOKEN=''
 
 - When the user is located at `/invoices`, the top frame shows an `<Overview />` component that displays a few stats regarding `this.state.invoices` data, such as; top and lowest vendor, total revenue, oldest and newest invoice, and also a count of total, accepted, and approved invoices. ~~The functionality isn't 100% right now (only clicking on 'Top Vendor' works), but eventually, clicking on each `<Stat />` component will filter the `this.state.invoices` array and the `<Table />` component will update accordingly.~~ You can click on each `<Stat />` category / component to filter the list down, or exit out of the filter and see the original `this.state.invoies` by caching the initial API request in `this.state.cache`.
 
-- The functionality is there for this, but the styling is far from it (and I plan to finish it). Anyways, clicking on a single invoice `<Row />` within the `<Table />` component, will take you to a <code>\`/invoices/${id}\`</code> page (e.g. `http://localhost:8080/invoices/inv_5920db49e2aa857757f00ff5672f0c40a0cfcb72`) where you can view additional details about the invoice. Clicking the 'X' in the upper-right corner will take you back to the initial `<Overview />` display.
+- The functionality is there for this, ~~but the styling is far from it (and I plan to finish it)~~. Anyways, clicking on a single invoice `<Row />` within the `<Table />` component, will take you to a <code>\`/invoices/${id}\`</code> page (e.g. `http://localhost:8080/invoices/inv_5920db49e2aa857757f00ff5672f0c40a0cfcb72`) where you can view additional details about the invoice. Clicking the 'X' in the upper-right corner will take you back to the initial `<Overview />` display.
 
 ## Structure
 I follow this structure for the most of my React.js projects -
@@ -66,7 +66,7 @@ I follow this structure for the most of my React.js projects -
 ## Going Forward
 I wanted to send in this project (although not 100% complete to at least give a decent idea of what I've been working on), a few things I'd like to finish working on...
 
-- The `<Details />` view isn't styled, or really built-out yet, but the functionality is there. This is will be my top priority.
+- ~~The `<Details />` view isn't styled, or really built-out yet, but the functionality is there. This is will be my top priority.~~
 
 - ~~When you click a `<Stat />` box on the main `<Overview />` component, only clicking on 'Top Vendors' will filter `this.state.invoices` to show only 'Rosato and Associates' data. I would like to finish this functionality and be able to click on each box, filter the data, and also exit out of the filter by clicking an 'X', to show the initial `this.state.invoices`.~~
 
