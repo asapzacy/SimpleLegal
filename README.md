@@ -51,13 +51,13 @@ I follow this structure for the most of my React.js projects -
 
       - `Sidebar.scss`
 
-    - `\config` - all config files - this project only includes a `routes.js` file that shows what component should be displayed per current route.
+    - `/config` - all config files - this project only includes a `routes.js` file that shows what component should be displayed per current route.
 
-    - `data` - any static data - stuff like `app_pages.js` or `table_categories.js`.
+    - `/data` - any static data - stuff like `app_pages.js` or `table_categories.js`.
 
-    - `helpers` - various files that have helper functions I can import and export out (e.g. `api.js`, `utils.js`, and `stats.js`)
+    - `/helpers` - various files that have helper functions I can import and export out (e.g. `api.js`, `utils.js`, and `stats.js`)
 
-    - `styles` - mainly is `_variables.scss`, which includes all sass variables to be used throughout the project. I've also been starting to use a `_utils.scss` files with common css rules.
+    - `/styles` - mainly is `_variables.scss`, which includes all sass variables to be used throughout the project. I've also been starting to use a `_utils.scss` files with common css rules.
 
   - `/dist` - build code
 
