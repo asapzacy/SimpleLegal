@@ -6,7 +6,7 @@ const Matter = ({ timekeeper, level, date, price, description }) => (
   <article className={s.container}>
     <h5>
       <strong>{`Timekeeper: `}</strong>
-      <span>{timekeeper ? `${timekeeper} (${level})` : '-'}</span>
+      <span>{timekeeper && `${timekeeper} (${level})`}</span>
     </h5>
     <h5>
       <strong>{`Date: `}</strong>
@@ -14,7 +14,7 @@ const Matter = ({ timekeeper, level, date, price, description }) => (
     </h5>
     <h5>
       <strong>{`Price: `}</strong>
-      <span>{formatPrice(price)}</span>
+      <span style={{color:price < 0 && '#ba0021'}}>{formatPrice(price)}</span>
     </h5>
     <h5>
       <strong>{`Description: `}</strong>

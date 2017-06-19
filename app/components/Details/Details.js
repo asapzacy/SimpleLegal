@@ -22,7 +22,7 @@ const Details = ({ isLoading, isError, details, hideDetails }) => (
               <h3 style={{margin:'0.33em 0',padding:'0 0.12em',borderBottom:'1px solid #070707',display:'inline-block',lineHeight:1.25}}>
                 {`Lines (${details.lines.length}):`}
               </h3>
-              <div style={{maxHeight:'150px',overflow:'auto',background:'#fff',border:'2px solid #e0e0e0',padding:'1em 1em 0'}}>
+              <div style={{maxHeight:'150px',overflowY:'scroll',background:'#fff',border:'2px solid #e0e0e0',padding:'1em 1em 0'}}>
                 { details.lines.map((el, i) => (
                   <Line
                     price={el.total}
