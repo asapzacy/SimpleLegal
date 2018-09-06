@@ -7,7 +7,7 @@ SimpleLegal | A coding challenge to create a small web app and play around with 
 
 ## Usage
 ```
-git clone https://github.com/zacarellano/SimpleLegal.git
+git clone https://github.com/asapzacy/SimpleLegal.git
 cd SimpleLegal
 yarn                              # npm install
 yarn start                        # npm run start
