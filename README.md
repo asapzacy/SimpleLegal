@@ -1,6 +1,6 @@
 # SimpleLegal
 
-![SimpleLegal preview](https://raw.githubusercontent.com/zacarellano/SimpleLegal/master/dist/assets/other/SimpleLegal_preview.png)
+![SimpleLegal preview](https://zac.codes/assets/img/projects/SimpleLegal_preview-xlarge.jpg)
 
 SimpleLegal | A coding challenge to create a small web app and play around with the SimpleLegal API.
 
